@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pepper Library Assistant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="top-bar">
+  <button id="langBtn" class="pill-btn">العربية</button>
+  <div class="logo-wrapper">
+  <img src="uop-logo.png" alt="University of Petra Logo" class="top-logo">
+</div>
+  <div id="statusBadge" class="status offline">Robot Offline</div>
+</div>
+
+  <!-- HOME -->
+  <section id="homeView" class="view active">
+  <div class="container center">
+    <h1 id="homeTitle">leo Library Assistant</h1>
+      <p id="homeSubtitle">Search for a books and let leo robot guide you or.</p>
+
+      <div class="home-actions">
+        <button id="searchCard" class="main-card">Search Books</button>
+        <button id="chatbotCard" class="main-card secondary">Ask Chatbot</button>
+      </div>
+
+      <div class="robot-panel">
+        <h2>Robot Connection</h2>
+        <button id="connectBtn" class="action-btn gray">Connect to ROS</button>
+
+        <input id="speechInput" class="speech-input" type="text" value="Hello, I am Pepper">
+        <button id="speakBtn" class="action-btn blue">Test Speech</button>
+
+        <div id="speechStatus" class="small-status">Not connected</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEARCH -->
+  <section id="searchView" class="view">
+    <div class="container">
+      <button id="backHomeBtn" class="back-btn">← Back Home</button>
+
+      <h1 id="searchTitle">Search Books</h1>
+
+      <div class="search-panel">
+        <div id="searchMessage" class="search-message"></div>
+<div id="suggestionBox" class="suggestion-box"></div>
+        <select id="searchMode" class="search-select">
+          <option value="all">All</option>
+          <option value="title">Title</option>
+          <option value="author">Author</option>
+          <option value="topic">Topic</option>
+        </select>
+
+        <input id="searchInput" class="search-input" type="text" placeholder="Start typing to search">
+      </div>
+
+      <p id="searchHint" class="hint">Start typing to show books.</p>
+
+      <div id="booksList" class="book-list"></div>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section id="detailsView" class="view">
+    <div class="container">
+      <button id="backSearchBtn" class="back-btn">← Back to Search</button>
+
+      <div class="details-layout">
+        <div class="details-card">
+          <h1 id="bookTitle"></h1>
+
+          <p><strong id="shelfLabel">Shelf:</strong> <span id="bookShelf"></span></p>
+          <p><strong id="statusLabel">Status:</strong> <span id="bookStatus"></span></p>
+          <p><strong id="authorLabel">Author:</strong> <span id="bookAuthor"></span></p>
+          <p><strong id="yearLabel">Year:</strong> <span id="bookYear"></span></p>
+
+          <h3 id="descriptionLabel">Description</h3>
+          <p id="bookDescription" class="description"></p>
+        </div>
+
+        <div class="details-actions">
+          <button id="viewMapBtn" class="action-btn purple">View Map</button>
+          <button id="navBtn" class="action-btn blue">Start Navigation</button>
+          <button id="chatBtn" class="action-btn gray">Ask Chatbot</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section id="mapView" class="view">
+    <div class="container">
+      <button id="backDetailsFromMapBtn" class="back-btn">← Back to Details</button>
+
+      <h1 id="mapTitle">Library Floor Map</h1>
+      <p id="mapSubtitle" class="hint">Book location is shown by shelf information.</p>
+
+      <div class="map-box">
+       <img src="floor-map.png" alt="Library floor map" class="map-img">      </div>
+    </div>
+  </section>
+
+  <!-- NAVIGATION ACTIVE -->
+  <section id="navigationView" class="view">
+    <div class="container center">
+      <h1 id="navigatingTitle">Navigating...</h1>
+      <p id="navigatingText" class="nav-text"></p>
+
+      <div class="nav-actions">
+        <button id="stopNavBtn" class="action-btn red">Stop Navigation</button>
+        <button id="callStaffBtn" class="action-btn orange">Call Staff</button>
+      </div>
+
+      <button id="backDetailsFromNavBtn" class="back-btn">← Back to Book Details</button>
+    </div>
+  </section>
+
+  <!-- CONFIRM MODAL -->
+  <div id="confirmOverlay" class="overlay hidden">
+    <div class="confirm-box">
+      <h2 id="confirmTitle">Are you ready to start?</h2>
+      <p id="confirmText">leo will start guiding you to the selected book.</p>
+
+      <div class="confirm-actions">
+        <button id="confirmYesBtn" class="action-btn blue">Yes, start</button>
+        <button id="confirmNoBtn" class="action-btn gray">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/roslib/build/roslib.min.js"></script>
+  <script src="translations.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
